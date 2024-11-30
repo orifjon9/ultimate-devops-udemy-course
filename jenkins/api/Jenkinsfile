@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    tools {
+        nodejs 'nodejs'
+    }
+    environment {
+        GIT_REPO = 'https://github.com/orifjon9/ultimate-devops-udemy-course'
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Checking out..'
+                git url: "${GIT_REPO}"
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Building..'
+                sh 'cd jenkins/app && npm install'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+                sh 'cd jenkins/app && npm test'
+            }
+        }
+    }
+}
