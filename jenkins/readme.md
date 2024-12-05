@@ -64,3 +64,35 @@ java -jar jenkins-cli.jar -s http://localhost:8080/ -i /path/to/your/private_key
 ```
 
 For more information on Jenkins CLI commands and options, you can refer to the [official Jenkins documentation](https://www.jenkins.io/doc/book/managing/cli/).
+
+### Stopping Jenkins
+
+To stop the Jenkins service, you can use the following command:
+```sh
+sudo systemctl stop jenkins
+```
+
+### Removing Jenkins
+
+If you need to remove Jenkins from your system, you can use the following commands:
+
+For Debian-based systems (e.g., Ubuntu):
+```sh
+sudo apt-get remove --purge jenkins
+```
+
+For Red Hat-based systems (e.g., CentOS, Fedora):
+```sh
+sudo yum remove jenkins
+```
+
+For macOS:
+```sh
+brew uninstall jenkins-lts
+```
+
+After removing Jenkins, you may also want to remove any residual configuration files:
+```sh
+sudo rm -rf /var/lib/jenkins
+sudo rm -rf /etc/jenkins
+```
